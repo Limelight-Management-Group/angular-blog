@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
 
@@ -8,6 +8,7 @@ import { ArticleService } from '../article.service';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
+
 export class ArticleComponent implements OnInit {
 
   article: Article = new Article();
@@ -24,7 +25,7 @@ export class ArticleComponent implements OnInit {
       this.articleService.getArticle(key).subscribe(
         article => {
           if(article === undefined){
-            this.router.navigateByUrl('');
+            this.router.navigateByUrl('404');
             return;
           }
           this.article = article;
